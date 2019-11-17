@@ -1,0 +1,43 @@
+/* .dashboard-container{
+	margin: 150px auto 0;
+} */
+.game-btn{
+	width: 280px;
+	white-space: pre-wrap;
+}
+.male-pirate{
+	float: right;
+}
+.next-btn{
+	float: right;
+	display: none;
+}
+label.pirate-gender-radio-label > input, label.pirate-character-label > input{
+	visibility: hidden;
+}
+label.pirate-gender-radio-label > input, label.pirate-character-label > input{
+	cursor: pointer;
+}
+label.pirate-gender-radio-label > input:checked + img, label.pirate-character-label > input:checked + img{
+	background-color: yellow;
+}
+label.pirate-character-label{
+	width: 18%;
+	text-align: center;
+}
+.intro-continue-div{
+	/* width: 730px;
+	margin: 0 auto; */
+	display: none;
+}
+.intro-end-div{
+	display: none;
+}
+.start-game-btn{
+	display: none;
+	float: right;
+}
+.intro-video, .intro-continue{
+	width: 100%;
+	height: 100%;
+}

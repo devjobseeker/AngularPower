@@ -1,0 +1,95 @@
+<div>
+
+  <div *ngIf="gameMode === 'intro'">
+		<div class="video-div">
+				<video class="intro-video" id="intro-video" autoplay="autoplay" (ended)="playIntroVideos()">
+					<source class="active" type="video/mp4" src="assets/videos/digit-span-running/Intro_1.mp4"/>
+				</video>
+			
+		</div>
+		<div class="clear container">
+				<button type="button" id="next-btn" class="next-btn btn btn-success" (click)="startPracticeTrials()">Next</button>
+		</div>
+  </div>
+  
+  <div *ngIf="gameMode === 'start'">
+		<div class="container instruction-container">
+			<h2 class="text-center">Digit Span Running (DSR)</h2>
+			<div class="before-game-title">Before Starting the Game -</div>
+			<ul class="instruction-ul">
+				<li>Make sure the headsets are plugged in.<br/>
+					<span style="margin-right:50px">
+						Child
+						<img src="assets/images/headset_child.png" width="150" height="150"/>
+					</span>
+					<span>
+						RA
+						<img src="assets/images/headset_RA.png" width="150" height="150"/>
+					</span>
+				</li>
+				<li>The <b>child</b> will <b>speak their answers </b> into the microphone 
+					when they see the green box.<br/>
+					<img src="assets/images/mouth_open.png" width="150" style="margin-right:100px"/>
+					<img src="assets/images/green_box.png" />
+				</li>
+				<li>The <b>RA</b> will enter the child's response with <b>the number pad on the keyboard</b>, 
+					and press <b>ENTER key</b> after they have entered all of the numbers. The <b>RA</b> will 
+					press the <b>* key</b> on the number pad if response Reaction Time or accuracy needs to be 
+					checked in the lab. <br/>
+					<img src="assets/images/label-keyboard-1.png" width="200" style="margin-right:100px"/>
+					<img src="assets/images/dsr_enter.png" width="200" style="margin-right:80px" />
+					<img src="assets/images/label-keyboard.png" width="150"/>
+				</li>
+			</ul>
+
+			<button type="button" (click)="startGame()" class="btn btn-success start-btn">Start</button>
+		</div>
+  </div>
+  
+  <div *ngIf="gameMode === 'real_trial'" class="container">
+		<div class="monster-div" id="monster-div">
+			<div><img src="assets/images/monster-baby-1.png" width="40%" class="dsr-monster-img"/></div>
+		</div>
+		<div class="green-box-div" id="green-box-div">
+			<div class="green-box"></div>
+			<span class="hidden-section" id="digits-span"></span>
+		</div>
+	</div>
+	
+	<div *ngIf="gameMode === 'practice_trial'">
+		<div class="monster-div container" id="monster-div">
+			<div>
+				<img src="assets/images/monster-baby-1.png" width="30%" class="dsr-monster-img"/>
+				<img src="assets/images/monster-baby-2.png" width="30%" class="dsr-monster-img"/>
+				<img src="assets/images/monster-baby-3.png" width="30%" class="dsr-monster-img"/>
+			</div>
+		</div>
+
+		<div class="green-box-div container" id="green-box-div">
+			<div class="green-box"></div>
+			<span class="hidden-section" id="digits-span"></span>
+		</div>
+
+		<div id="feedback-video-div" class="feedback-video-div">			
+			<video class="feedback-video" id="feedback-video">
+				<source type="video/mp4" />
+			</video>
+		</div>
+	</div>
+	
+	<div *ngIf="gameMode === 'complete'">
+		<div class="video-div">
+			<video class="end-video" id="end-video" autoplay="autoplay" (ended)="playEndingVideo()">
+				<source class="active" type="video/mp4" src="assets/videos/digit-span-running/Ending_Great_Job_1.mp4"/>
+			</video>
+			<div class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+				<span style="margin-right:350px;margin-left:150px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+				<span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+			</div>
+		</div>
+		<a id="end-btn" class="end-btn btn btn-success" [routerLink]="['/app/dashboard']">
+			<span style="margin-right:8px">Exit</span> <i class="fa fa-lg fa-sign-out"></i>
+		</a>
+	</div>
+  
+</div>

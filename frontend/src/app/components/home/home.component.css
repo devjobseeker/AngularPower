@@ -1,0 +1,29 @@
+.login-container{
+	margin: 0 auto;
+}
+.login-form{
+	width: 500px;
+    margin: 0 auto;
+    background-image: url('/assets/images/home/home-background.png');
+    background-size: 100% 100%;
+    padding: 30px 10px;
+    border-radius: 20px;
+}
+.login-form-label{
+    font-weight: bold;
+    color: #000;
+    font-size: 18px;
+}
+.submit-btn{
+    width: 200px;
+    border-radius: 10px;
+}
+.login-title-div{
+    margin-bottom: 30px;
+}
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}

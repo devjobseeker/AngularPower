@@ -1,0 +1,50 @@
+.user-management-container{
+	margin: 150px auto;
+}
+.add-user-form, .deactivate-user-form{
+	width: 100%;
+	/* margin: 0 auto; */
+}
+.form-label{
+    /* font-weight: bold; */
+    /* color: blue; */
+    font-size: 16px;
+    text-align: right;
+}
+.submit-btn{
+	width: 200px;
+}
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}
+.user-grid-div{
+    padding: 15px;
+    max-height: 550px;
+    overflow-y: auto;
+}
+.user-grid-title{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid silver;
+}
+.user-grid-header, .user-grid-row{
+    border-bottom: 2px solid silver;
+}
+.user-grid-cell, .user-grid-header-cell{
+    border-right: 2px solid silver;
+}
+.add-user-div, .deactivate-user-div{
+    border: 2px solid silver;
+    padding: 15px;
+}
+.add-user-title, .deactivate-user-title{
+    margin-bottom: 20px;
+}
+.add-user-title .main-title, .deactivate-user-title .main-title{
+    font-weight: bold;
+    font-size: 18px;
+}

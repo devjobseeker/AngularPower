@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container login-container">
+  <div class="row">
+    <div class="col-12 text-center login-title-div">
+        <div>
+          <img src="assets/images/home/home-title.png" class="img-fluid" style="max-height:340px"/>
+        </div>
+      <div class="text-muted">Please Enter Student ID, Grade and Experimenter Name Below</div>
+    </div>
+  </div>
+
+  <div class="row">
+      <form class="login-form" (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-group row">
+            <label class="login-form-label col-sm-3">Student ID</label>
+            <div class="col-sm-8">
+                <input type="text" name="student-name" class="form-control" 
+                [(ngModel)]="studentName" #student_name="ngModel" required/>
+                <div *ngIf="student_name.touched && student_name.invalid" class="alert alert-danger">
+                  <div *ngIf="student_name.errors.required">
+                      Please enter a student ID.
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+
+          <div class="form-group row">
+            <label class="login-form-label col-sm-3">Grade</label>
+            <div class="col-sm-8">
+              <select [(ngModel)]="grade" #grade_name="ngModel" name="grade" required>
+                <option value="K">Grade K</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+                <option value="5">Grade 5</option>
+                <option value="6">Grade 6</option>
+              </select>
+              <div *ngIf="grade_name.touched && grade_name.invalid" class="alert alert-danger">
+                  <div *ngIf="grade_name.errors.required">
+                      Please select your grade.
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label class="login-form-label col-sm-3">Experimenter</label>
+            <div class="col-sm-8">
+                <input type="text" name="experimenter-name" class="form-control" 
+                [(ngModel)]="experimenter" #experimenter_name="ngModel" required/>
+                <div *ngIf="experimenter_name.touched && experimenter_name.invalid" class="alert alert-danger">
+                    <div *ngIf="experimenter_name.errors.required">
+                        Please enter your experimenter name.
+                    </div>
+                </div>
+            </div>
+          </div>
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-success submit-btn" [disabled]="!loginForm.form.valid">Start</button>
+          </div>
+          
+      </form>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3>Prerequisite</h3>
+      <ul>
+        <li>Please make sure you have internet access.</li>
+        <li>Please make sure your project REDCap has the correct data structure.</li>
+        <li>Please get your REDCap URL and project API ready.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-div">
+    <h3>
+      Please enter your project API URL, token and device Id! Device Id is optional.
+    </h3>
+
+    <form (ngSubmit)="uploadData()" #apiForm="ngForm">
+      <div class="form-group row">
+        <label class="login-form-label col-sm-3 text-right">URL</label>
+        <div class="col-sm-8">
+            <input type="text" name="url" class="form-control" 
+            [(ngModel)]="apiURL" #url="ngModel" required/>
+            <div *ngIf="url.touched && url.invalid" class="alert alert-danger">
+              <div *ngIf="url.errors.required">
+                  Please enter your URL.
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="login-form-label col-sm-3 text-right">Token</label>
+        <div class="col-sm-8">
+            <input type="text" name="token" class="form-control" 
+            [(ngModel)]="apiToken" #token="ngModel" required/>
+            <div *ngIf="token.touched && token.invalid" class="alert alert-danger">
+              <div *ngIf="token.errors.required">
+                  Please enter your token.
+              </div>
+            </div>
+        </div>  
+      </div>
+
+      <div class="form-group row">
+        <label class="login-form-label col-sm-3 text-right">Device Id</label>
+        <div class="col-sm-8">
+          <input type="text" name="device-id" class="form-control" [(ngModel)]="deviceId" />
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn" (click)="testConnection()" [disabled]="disableTestBtn" style="margin-right: 10px">
+          Test Connection
+        </button>
+        <button type="submit" class="btn btn-success submit-btn" [disabled]="!apiForm.form.valid && disableUploadBtn">Upload</button>
+      </div>
+
+      <div class="text-center" *ngIf="connectionSuccess != undefined">
+        <span *ngIf="connectionSuccess" style="color:green">{{testMessage}}</span>
+        <span *ngIf="!connectionSuccess" style="color: red">{{testMessage}}</span>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="row" style="border-bottom: 1px solid #000">
+        <div class="col-3"><b>Subject Id</b> </div>
+        <div class="col-1"><b>Cohort</b> </div>
+        <div class="col-1"><b>Grade</b></div>
+        <div class="col-1"><b>Game Id</b></div>
+        <div class="col-2"><b>Data Category</b></div>
+        <div class="col-1"><b>Total Count</b></div>
+        <div class="col-3"><b>Status</b></div>
+      </div>
+    </div>
+    <div class="col-12" *ngFor="let record of dataToBeProcessed" style="border-bottom: 1px solid silver">
+      <div class="row">
+        <div class="col-3">{{record.childId}} </div>
+        <div class="col-1">
+          <select [(ngModel)]="record.cohort">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="col-1">{{record.grade}}</div>
+        <div class="col-1">{{record.gameId}}</div>
+
+        <div class="col-2">{{record.category}}</div>
+        <div class="col-1">{{record.totalRecordsCount}}</div>
+        <div class="col-3">
+          <span *ngIf="record.syncStatus === 'Pending'">{{record.syncStatus}}</span>
+          <span *ngIf="record.syncStatus === 'Processing'">
+            <i class="fa fa-refresh fa-spin"></i>
+          </span>
+          <span *ngIf="record.syncStatus === 'Finished'" style="color:green">
+            <i class="fa fa-check-circle fa-lg"></i>
+          </span>
+          <span *ngIf="record.syncStatus === 'Fail'" style="color:red">
+            <i class="fa fa-times-circle fa-lg"></i>
+            <span>{{record.syncDataResult.errorDetail}}</span>
+          </span>
+          <span *ngIf="record.syncStatus === 'NoData'">
+            No Data To Be Uploaded
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

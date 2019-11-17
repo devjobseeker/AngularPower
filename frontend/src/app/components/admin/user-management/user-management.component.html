@@ -1,0 +1,109 @@
+<div class="container user-management-container">
+
+  <div class="row">
+    <div class="col-5">
+      <div class="row add-user-div">
+          <div class="col-12 add-user-title">
+            <div class="text-center main-title">Add User</div>
+            <div class="text-center text-muted">Please enter username and password</div>
+          </div>
+          <div class="col-12">
+            <form class="add-user-form" (ngSubmit)="addUser()" #addUserForm="ngForm">
+              <div class="form-group row">
+                <label class="form-label col-sm-3">Username</label>
+                <div class="col-sm-8">
+                  <input type="text" name="username" class="form-control" 
+                    [(ngModel)]="aUsername" #user_name="ngModel" required/>
+                    <div *ngIf="user_name.touched && user_name.invalid" class="alert alert-danger">
+                      <div *ngIf="user_name.errors.required">
+                          Please enter a username.
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="form-label col-sm-3">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" name="password" class="form-control" 
+                    [(ngModel)]="aPassword" #password_text="ngModel" required/>
+                    <div *ngIf="password_text.touched && password_text.invalid" class="alert alert-danger">
+                        <div *ngIf="password_text.errors.required">
+                            Please enter your password.
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row" [ngStyle]="addMessageStyle">
+                {{addUserMessage}}
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-info submit-btn" [disabled]="!addUserForm.form.valid">Add User</button>
+              </div>
+            </form>
+          </div>
+      </div>
+
+      <div class="row">
+        <br/>
+      </div>
+
+
+      <div class="row deactivate-user-div">
+          <div class="col-12 deactivate-user-title">
+            <div class="text-center main-title">Deactivate User</div>
+            <div class="text-center text-muted">Please enter username, after deactivating the user, the user will not be able to log in.</div>
+          </div>
+          <div class="col-12">
+            <form class="deactivate-user-form" (ngSubmit)="deactivateUser()" #deactivateUserForm="ngForm">
+              <div class="form-group row">
+                <label class="form-label col-sm-3">Username</label>
+                <div class="col-sm-8">
+                  <input type="text" name="username" class="form-control" 
+                    [(ngModel)]="dUsername" #duser_name="ngModel" required/>
+                    <div *ngIf="duser_name.touched && duser_name.invalid" class="alert alert-danger">
+                      <div *ngIf="duser_name.errors.required">
+                          Please enter a username.
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row" [ngStyle]="deMessageStyle">
+                {{deUserMessage}}
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-danger submit-btn" [disabled]="!deactivateUserForm.form.valid">Deactivate User</button>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+    
+    <div class="col-7">
+      <div class="row user-grid-div">
+        <div class="col-12 user-grid-title">
+          View All Users
+        </div>  
+        <div class="col-12">
+          <div class="row user-grid-header">
+            <div class="col-4 user-grid-header-cell">Username</div>
+            <div class="col-3 user-grid-header-cell">Role</div>
+            <div class="col-3 user-grid-header-cell">Status</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row user-grid-row" *ngFor="let user of userData">
+            <div class="col-4 user-grid-cell">{{user.username}}</div>
+            <div class="col-3 user-grid-cell">{{user.role}}</div>
+            <div class="col-3 user-grid-cell">{{user.enabled ? 'Active' : 'Non-Active'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
