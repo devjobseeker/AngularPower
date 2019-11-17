@@ -1,0 +1,79 @@
+item_id,item_name,item_src,price_grade_1,price_grade_2,price_grade_3,price_grade_4,price_grade_5,price_grade_6,price_grade_k,price_level
+1,Badminton,"Sport Badminton.png",45,50,55,60,65,70,40,3
+2,Baseball,"Sport Baseball.png",45,50,55,60,65,70,40,3
+3,Basketball,"Sport Basketball.png",45,50,55,60,65,70,40,3
+4,Bowling,"Sport Bowling.png",65,70,75,80,85,90,60,5
+5,Football,"Sport Football.png",45,50,55,60,65,70,40,3
+6,"Ping Pong","Sport Ping Pong.png",85,90,95,100,105,110,80,7
+7,"Pointe Shoes","Sport Pointe Shoes.png",65,70,75,80,85,90,60,5
+8,Soccer,"Sport Soccer.png",45,50,55,60,65,70,40,3
+9,Tennis,"Sport Tennis.png",65,70,75,80,85,90,60,5
+10,"Archeology Tools","Store Archeology Tools.png",75,80,85,90,95,100,70,6
+11,Balloons,"Store Balloons.png",25,30,35,40,45,50,20,1
+12,Bananas,"Store Bananas.png",25,30,35,40,45,50,20,1
+13,Bandana,"Store Bandana.png",35,40,45,50,55,60,30,2
+14,"Blue Bike","Store Blue Bike.png",85,90,95,100,105,110,80,7
+15,Bones,"Store Bones.png",25,30,35,40,45,50,20,1
+16,"Candy Corn","Store Candy Corn.png",25,30,35,40,45,50,20,1
+17,"Candy Jewelry","Store Candy Jewelry.png",45,50,55,60,65,70,40,3
+18,"Car 1","Store Car 1.png",150,150,150,150,150,150,150,8
+19,"Car 2","Store Car 2.png",150,150,150,150,150,150,150,8
+20,"Car 3","Store Car 3.png",85,90,95,100,105,110,80,7
+21,"Car 4","Store Car 4.png",150,150,150,150,150,150,150,8
+22,Chalice,"Store Chalice.png",85,90,95,100,105,110,80,7
+23,"Choco Bar","Store Choco Bar.png",25,30,35,40,45,50,20,1
+24,"Choco Chip Ice Cream","Store Choco Chip Ice Cream.png",25,30,35,40,45,50,20,1
+25,"Choco Ice Cream","Store Choco Ice Cream.png",25,30,35,40,45,50,20,1
+26,Compass,"Store Compass.png",35,40,45,50,55,60,30,2
+27,"Cotton Candy","Store Cotton Candy.png",25,30,35,40,45,50,20,1
+28,"Crown Silver","Store Crown Silver.png",85,90,95,100,105,110,80,7
+29,Crown,"Store Crown.png",150,150,150,150,150,150,150,8
+30,Crystals,"Store Crystals.png",75,80,85,90,95,100,70,6
+31,Cupcake,"Store Cupcake.png",25,30,35,40,45,50,20,1
+32,"Cute Dino 2","Store Cute Dino 2.png",55,60,65,70,75,80,50,4
+33,"Cute Dino","Store Cute Dino.png",55,60,65,70,75,80,50,4
+34,"Dino 1","Store Dino 1.png",35,40,45,50,55,60,30,2
+35,"Dino Shirt Blue","Store Dino Shirt Blue.png",35,40,45,50,55,60,30,2
+36,"Dino Shirt Purple","Store Dino Shirt Purple.png",35,40,45,50,55,60,30,2
+37,Flowers,"Store Flowers.png",35,40,45,50,55,60,30,2
+38,Flute,"Store Flute.png",65,70,75,80,85,90,60,5
+39,Gloves,"Store Gloves.png",45,50,55,60,65,70,40,3
+40,"Gold Bars","Store Gold Bars.png",150,150,150,150,150,150,150,8
+41,Guitar,"Store Guitar.png",85,90,95,100,105,110,80,7
+42,Gumball,"Store Gumball.png",65,70,75,80,85,90,60,5
+43,"Gummi Worms","Store Gummi Worms.png",25,30,35,40,45,50,20,1
+44,"Gummy Bears","Store Gummy  Bears.png",25,30,35,40,45,50,20,1
+45,Hat,"Store Hat.png",35,40,45,50,55,60,30,2
+46,Helmet,"Store Helmet.png",45,50,55,60,65,70,40,3
+47,Legos,"Store Legos.png",25,30,35,40,45,50,20,1
+48,"Lion Statue","Store Lion Statue.png",85,90,95,100,105,110,80,7
+49,Lollipop,"Store Lollipop.png",25,30,35,40,45,50,20,1
+50,"Magnifying Glass","Store Magnifying Glass.png",35,40,45,50,55,60,30,2
+51,Medallion,"Store Medallion.png",65,70,75,80,85,90,60,5
+52,"Mint Chip Ice Cream","Store Mint Chip Ice Cream.png",25,30,35,40,45,50,20,1
+53,"Motorcycle Red","Store Motorcycle Red.png",150,150,150,150,150,150,150,8
+54,Motorcycle,"Store Motorcycle.png",150,150,150,150,150,150,150,8
+55,Necklace,"Store Necklace.png",35,40,45,50,55,60,30,2
+56,Paints,"Store Paints.png",45,50,55,60,65,70,40,3
+57,"Pirate Jersey","Store Pirate Jersey.png",55,60,65,70,75,80,50,4
+58,"Pizza Slice","Store Pizza Slice.png",25,30,35,40,45,50,20,1
+59,"Plant 1","Store Plant 1.png",25,30,35,40,45,50,20,1
+60,"Plant 2","Store Plant 2.png",25,30,35,40,45,50,20,1
+61,"Race Suit Blue","Store Race Suit Blue.png",75,80,85,90,95,100,70,6
+62,"Race Suit Gray","Store Race Suit Gray.png",75,80,85,90,95,100,70,6
+63,"Red Bike","Store Red Bike.png",75,80,85,90,95,100,70,6
+64,"Robot Hand","Store Robot Hand.png",55,60,65,70,75,80,50,4
+65,"Robot Leg","Store Robot Leg.png",55,60,65,70,75,80,50,4
+66,Robot,"Store Robot.png",85,90,95,100,105,110,80,7
+67,"Rubber Duck","Store Rubber Duck.png",25,30,35,40,45,50,20,1
+68,Sceptre,"Store Sceptre.png",85,90,95,100,105,110,80,7
+69,Shield,"Store Shield.png",75,80,85,90,95,100,70,6
+70,"Silver Bars","Store Silver Bars.png",150,150,150,150,150,150,150,8
+71,Spyglass,"Store Spyglass.png",75,80,85,90,95,100,70,6
+72,"Teddy Bear","Store Teddy Bear.png",25,30,35,40,45,50,20,1
+73,Train,"Store Train.png",85,90,95,100,105,110,80,7
+74,"Vanilla Ice Cream","Store Vanilla Ice Cream.png",25,30,35,40,45,50,20,1
+75,"Video Game","Store Video Game.png",75,80,85,90,95,100,70,6
+76,Wagon,"Store Wagon.png",35,40,45,50,55,60,30,2
+77,Wand,"Store Wand.png",65,70,75,80,85,90,60,5
+78,Wings,"Store Wings.png",55,60,65,70,75,80,50,4
