@@ -1,0 +1,109 @@
+<div>
+  <div *ngIf="gameMode === 'intro'">
+    <div class="video-div">
+      <video class="intro-video" id="intro-video">
+        <source class="active" type="video/mp4" />
+      </video>
+    </div>
+    <div class="clear container">
+      <button type="button" id="next-btn" class="next-btn btn btn-success" (click)="startPracticeTrials()">Next</button>
+    </div>
+    
+  </div>
+
+  <div *ngIf="gameMode === 'start'">
+    <div class="container instruction-container">
+      <h2 class="text-center">Phonological Binding Span (PBS)</h2>
+      <div class="before-game-title">Before Starting the Game -</div>
+      <ul class="instruction-ul">
+        <li>Make sure the headsets are plugged in.<br/>
+          <span style="margin-right:50px">
+            Child
+            <img src="assets/images/headset_child.png" width="150" height="150"/>
+          </span>
+          <span>
+            RA
+            <img src="assets/images/headset_RA.png" width="150" height="150"/>
+          </span>
+        </li>
+        <li>The <b>child</b> will <b>speak their answer </b> into the microphone.<br/>
+          <img src="assets/images/mouth_open.png" width="150"/>
+
+        </li>
+        <li>The <b>RA</b> will use the keyboard to press the <b>"C" or "M" keys </b> according 
+          to the child's response, and press <b>* key </b> if response accuracy needs to be checked in the lab.<br/>
+          <img src="assets/images/pbs_ins.png" width="300" style="margin-right:100px"/>
+          <img src="assets/images/label-keyboard.png" width="150"/>
+        </li>
+      </ul>
+
+      <button type="button" (click)="startGame()" class="btn btn-success start-btn">Start</button>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial'">  
+    
+    <div class="robot-div" id="robot-div">
+      
+      <!-- <div class="door-div"> 
+        <img src="assets/images/brown-door.png" />
+      </div> -->
+      <div>
+        <img src="assets/images/monsters.png" style="width:100%"/>
+      </div>
+    </div>
+
+    <div class="ear-div" id="ear-div">
+      <img src="assets/images/baby-response-black.png" style="width:100%"/>
+    </div>
+    
+    <div class="green-box-div" id="green-box-div">
+        <img src="assets/images/baby-response-black-with-bubble.png" style="width:100%"/>
+      <!-- <div class="green-box"></div>  -->
+      <!-- <span class="hidden-section" id="digits-span"></span> -->
+    </div>
+
+    <div id="feedback-video-div" class="feedback-video-div">			
+      <video class="feedback-video" id="feedback-video">
+        <source type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'real_trial'">
+    <div class="robot-div" id="robot-div">
+      <!-- <div class="door-div">
+        <img src="assets/images/brown-door.png" />
+      </div> -->
+      <div>
+        <img src="assets/images/monsters.png" style="width:100%"/>
+      </div>
+    </div>
+
+    <div class="ear-div" id="ear-div">
+      <img src="assets/images/baby-response-black.png" style="width:100%"/>
+    </div>
+    
+    <div class="green-box-div" id="green-box-div">
+      <img src="assets/images/baby-response-black-with-bubble.png" style="width:100%"/>
+      <!-- <div class="green-box"></div> -->
+      <!-- <span class="hidden-section" id="digits-span"></span> -->
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'complete'">
+    <div class="video-div">
+      <video class="end-video" id="end-video" autoplay="autoplay" (ended)="playEndingVideo()">
+        <source class="active" type="video/mp4" src="assets/videos/phonological-binding/Ending_1.mp4"/>
+      </video>
+      <div class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+        <span style="margin-right:350px;margin-left:150px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+        <span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+      </div>
+    </div>
+    <a id="end-btn" class="end-btn btn btn-success" [routerLink]="['/app/dashboard']">
+      <span style="margin-right:8px">Exit</span> <i class="fa fa-lg fa-sign-out"></i>
+    </a>
+  </div>
+
+</div>

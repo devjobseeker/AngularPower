@@ -1,0 +1,49 @@
+.next-btn, .end-btn, .play-triple-intro-btn{
+	display: none;
+	float: right;
+}
+.intro-video, .feedback-video, .end-video{
+    width: 100%;
+	height: 100%;
+    /* width: 730px;
+	margin: 0 auto;
+	display: block; */
+}
+.feedback-video-div{
+    display: none;
+}
+/* .green-box-div{
+    display: none;
+    height: 80vh;
+}
+.green-box{
+	height: 100%;
+	width: 80%;
+	border: 10px solid #13d609;
+	margin: 100px auto 0;
+} */
+.robot-image-div{
+	height: 400px;
+}
+.robot-img{
+	max-height: 400px;
+	display: block;
+	margin: 0 auto;
+}
+.yes-btn, .yes-btn:disabled{
+	border-radius: 50%;
+	border: none;
+	margin: auto;
+	width: 150px;
+	height: 150px;
+	display: block;
+	margin-top: 80px;
+	font-size: 80px;
+	background-image: url('/assets/images/blue_button.png');
+	background-size: 100% 100%;
+}
+.yes-btn:focus, .yes-btn:visited{
+	background-image: url('/assets/images/blue_button.png');
+	border: none;
+	outline: none;
+}

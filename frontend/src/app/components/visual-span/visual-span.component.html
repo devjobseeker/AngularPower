@@ -1,0 +1,115 @@
+<div>
+  <div *ngIf="gameMode === 'intro'">
+    <div class="video-div">
+      <video class="intro-video" id="intro-video" (ended)="playIntroVideos()" autoplay="autoplay">
+        <source class="active" type="video/mp4" src="assets/videos/visual-span/Intro_1.mp4"/>
+      </video>
+    </div>
+    <div class="clear container">
+      <button type="button" id="next-btn" class="next-btn btn btn-success" (click)="startPracticeTrials()">Next</button>
+    </div>
+    
+  </div>
+
+  <div *ngIf="gameMode === 'start'">
+    <div class="container instruction-container">
+      <h2 class="text-center">Visual Span (VS)</h2>
+      <div class="before-game-title">Before Starting the Game -</div>
+      <ul class="instruction-ul">
+        <li>Make sure the headsets are plugged in.<br/>
+          <span style="margin-right:50px">
+            Child
+            <img src="assets/images/headset_child.png" width="150" height="150"/>
+          </span>
+          <span>
+            RA
+            <img src="assets/images/headset_RA.png" width="150" height="150"/>
+          </span>
+        </li>
+        <li>The <b>child</b> will rest the responding hand on the table, and <b>use the touchscreen</b> to 
+          select the correct gems on the screen.<br/>
+          <span style="margin-right:50px">
+              <img src="assets/images/green_circle.png" width="200"/>
+            </span>
+            <span>
+              <img src="assets/images/vs_ins.png" />
+            </span>
+        </li>
+        <li>The <b>RA</b> will need access to the <b>* key</b> on the number pad of the keyboard if response Reaction Time or accuracy needs to be checked in the lab. <br/>
+          <img src="assets/images/label-keyboard.png" width="150"/>
+        </li>
+      </ul>
+
+      <button type="button" (click)="startGame()" class="btn btn-success start-btn">Start</button>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial' || gameMode === 'real_trial'">
+    <div class="ready-div container" id="ready-div">
+      <!-- <img src="assets/images/get_ready.png" class="img-fluid" width="100%"/> -->
+    </div>
+
+    <div class="polygon-div container" id="polygon-div">
+      <!-- show polygons correspondingly-->
+    </div>
+    
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial'">
+    <div class="answer-div container" id="answer-div">
+        <div style="margin:0 auto 100px" id="empty-block-div">
+          <span *ngFor="let ans of userAnswer; let i = index">
+            <span *ngIf="i == 0" class="empty-block" id="user-answer-{{i}}" [style.background-image]="ans['img']"></span>
+            <span *ngIf="i > 0" class="empty-block left-empty-block" id="user-answer-{{i}}" [style.background-image]="ans['img']"></span>
+          </span>
+        </div>
+  
+        <div>
+          <span *ngFor="let choice of allChoices">
+            <img src="assets/images/visual-span/practice/{{choice}}.png" attr.data-polygenid="{{choice}}" width="12.5%" (click)="clickPolygon($event)" class="polygon-choice"/>
+          </span>
+        </div>
+        
+    </div>
+
+    <div id="feedback-video-div" class="feedback-video-div">			
+      <video class="feedback-video" id="feedback-video">
+        <source type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'real_trial'"> 
+      <div class="answer-div container" id="answer-div">
+        <div style="margin:0 auto 100px" id="empty-block-div">
+          <span *ngFor="let ans of userAnswer; let i = index">
+            <span *ngIf="i == 0" class="empty-block" id="user-answer-{{i}}" [style.background-image]="ans['img']"></span>
+            <span *ngIf="i > 0" class="empty-block left-empty-block" id="user-answer-{{i}}" [style.background-image]="ans['img']"></span>
+          </span>
+        </div>
+  
+        <div>
+          <span *ngFor="let choice of allChoices">
+            <img src="assets/images/visual-span/real/{{choice}}.png" attr.data-polygenid="{{choice}}" width="12.5%" (click)="clickPolygon($event)" class="polygon-choice"/>
+          </span>
+        </div>
+        
+      </div>
+  </div>
+
+  <div *ngIf="gameMode === 'complete'">
+    <div class="video-div">
+      <video class="end-video" id="end-video" autoplay="autoplay" (ended)="showExitBtn()">
+        <source class="active" type="video/mp4" src="assets/videos/visual-span/Ending.mp4"/>
+      </video>
+      <div class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+        <span style="margin-right:350px;margin-left:150px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+        <span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+      </div>
+    </div>
+    <a id="end-btn" class="end-btn btn btn-success" [routerLink]="['/app/dashboard']">
+      <span style="margin-right:8px">Exit</span> <i class="fa fa-lg fa-sign-out"></i>
+    </a>
+  </div>
+
+</div>

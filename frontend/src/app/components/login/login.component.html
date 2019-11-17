@@ -1,0 +1,60 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-12 text-center login-title-div">
+      <div>
+        <img src="assets/images/login/power-title.png" class="img-fluid"/>
+      </div>
+      <div>
+        <span class="text-muted">Please Login With Password Below</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="errorMessage" class="alert alert-danger" style="margin:0 auto 20px">{{errorMessage}}</div>
+  </div>
+  <div class="row">
+      <form class="login-form" (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-group row">
+            <label class="login-form-label col-2"><i class="fa fa-user"></i></label>
+            <div class="col-9">
+                <input type="text" name="username" class="form-control" placeholder="Username"
+                [(ngModel)]="username" #user_name="ngModel" required/>
+                <div *ngIf="user_name.touched && user_name.invalid" class="alert alert-danger">
+                  <div *ngIf="user_name.errors.required">
+                      Please enter a username.
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+          
+          <div class="form-group row">
+            <label class="login-form-label col-2"><i class="fa fa-lock"></i></label>
+            <div class="col-9">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                [(ngModel)]="password" #password_text="ngModel" required/>
+                <div *ngIf="password_text.touched && password_text.invalid" class="alert alert-danger">
+                    <div *ngIf="password_text.errors.required">
+                        Please enter your password.
+                    </div>
+                </div>
+            </div>
+          </div>
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-success submit-btn" [disabled]="!loginForm.form.valid">Log in</button>
+          </div>
+          
+      </form>
+  </div>
+
+  <div class="row">
+    <div class="contact-us-div">
+      <br/>
+      <div><hr></div>
+      <div class="text-muted text-center">Don't have an account? Contact us at powerteamaz@gmail.com</div>
+    </div>
+    
+  </div>
+</div>

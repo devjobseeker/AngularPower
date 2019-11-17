@@ -1,0 +1,13 @@
+<div *ngIf="userRole == 'ADMIN'" style="margin:20px">
+    <a class="btn btn-info game-btn" [routerLink]="['/admin/user']">
+      <i class="fa fa-user"></i> <span style="margin-left:5px">Admin</span>
+    </a>
+</div>
+<div *ngIf="displayLogOut">
+  
+  <button class="btn btn-success" type="button" (click)="logout()" style="float:right;margin:10px">
+    <span style="margin-right:8px">Log out</span> <i class="fa fa-lg fa-sign-out"></i>
+  </button>
+
+  <div class="clear"></div>
+</div>

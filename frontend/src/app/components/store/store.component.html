@@ -1,0 +1,98 @@
+<div class="row store-div" *ngIf="gameMode === 'store'">
+  <div class="col-8">
+    <div class="top-border-div"></div>
+    <div class="store-frame-div">
+      <div class="row-item-div">
+        <span *ngFor="let item of firstRowItems" class="item-div">
+          <img src="assets/images/store/{{item.src}}" class="img-fluid item-img" (click)="chooseAnItem($event)" 
+            attr.data-price="{{item.price}}" attr.data-itemid="{{item.id}}"/>
+          <span class="price-span">{{item.price}}</span>
+        </span>
+      </div>
+
+      <div class="row-item-div">
+        <span *ngFor="let item of secondRowItems" class="item-div">
+          <img src="assets/images/store/{{item.src}}" class="img-fluid item-img" (click)="chooseAnItem($event)" 
+            attr.data-price="{{item.price}}" attr.data-itemid="{{item.id}}"/>
+          <span class="price-span">{{item.price}}</span>
+        </span>
+      </div>
+
+      <div class="row-item-div">
+        <span *ngFor="let item of thirdRowItems" class="item-div">
+          <img src="assets/images/store/{{item.src}}" class="img-fluid item-img" (click)="chooseAnItem($event)" 
+            attr.data-price="{{item.price}}" attr.data-itemid="{{item.id}}"/>
+          <span class="price-span">{{item.price}}</span>
+        </span>
+      </div>
+
+      <div class="row-item-div">
+        <span *ngFor="let item of fourthRowItems" class="item-div">
+          <img src="assets/images/store/{{item.src}}" class="img-fluid item-img" (click)="chooseAnItem($event)" 
+            attr.data-price="{{item.price}}" attr.data-itemid="{{item.id}}"/>
+          <span class="price-span">{{item.price}}</span>
+        </span>
+      </div>
+    </div>
+    <div class="bottom-border-div"></div>
+  </div>
+
+  <div class="col-4">
+    <div>
+      <button class="btn btn-success" (click)="refreshStoreItems()">Refresh</button>
+    </div>
+
+    <div style="margin-top:150px;">
+      <div class="total-coins-div"> 
+        <img src="assets/images/skeleton-icon.png" style="margin-left:5px;margin-right:30px"/>
+        {{totalCoins}}
+      </div>
+    </div>
+    <br/>
+    <div class="text-center">
+      <button class="btn done-btn" (click)="displayAchievement()"></button>
+    </div>
+    
+  </div>
+</div>
+
+<div class="row store-div" style="padding-top:100px" *ngIf="gameMode === 'purchase'">
+    <div class="col-8 text-center" >
+      <div>
+          <img src="assets/images/store/{{selectedItem.src}}" width="400"/>
+      </div>
+        
+        <span class="purchase-price-span">{{selectedItem.price}}</span>
+    </div>
+  
+    <div class="col-4">
+      <div class="buyit-div">Buy it?</div>
+      <div class="text-center">
+        <button class="btn yes-btn" (click)="purchaseItem()" [disabled]="notEnoughMoney">YES</button>
+        <button class="btn no-btn" (click)="cancelPurchase()">NO</button>
+      </div>
+      
+      <div class="total-coins-div"> 
+        <img src="assets/images/skeleton-icon.png" style="margin-left:5px;margin-right:30px"/>
+        {{totalCoins}}
+      </div>
+      <div class="text-center">
+        <button class="btn done-btn" (click)="displayAchievement()"></button>
+      </div>
+    </div>
+</div>
+
+<div class="row store-achievement-div" *ngIf="gameMode === 'display'">
+  <div class="col-3">
+    <img src="assets/images/pirate-characters/{{pirateCharater}}.png" />
+  </div>
+
+  <div class="col-9" style="padding-top: 10%;">
+    <div class="text-right">
+      <button class="btn done-btn" (click)="goToDashboard()"></button>
+    </div>
+    <span *ngFor="let item of purchasedItems">
+      <img src="assets/images/store/{{item.src}}" class="img-fluid purchased-item-img" [@imgAnimation]="item.state"/>
+    </span>
+  </div>
+</div>

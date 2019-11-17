@@ -1,0 +1,51 @@
+.next-btn, .end-btn{
+	display: none;
+	float: right;
+}
+/* .intro-video, .feedback-video{
+	width: 730px;
+	margin: 0 auto;
+	display: block;
+} */
+.intro-video, .feedback-video, .end-video{
+    width: 100%;
+	height: 100%;
+    /* width: 730px;
+	margin: 0 auto;
+	display: block; */
+}
+/* .feedback-video{
+    display: block;
+} */
+/* .video-div{
+	margin-top: 100px;
+} */
+.feedback-video-div{
+    /* margin: 100px auto 0; */
+    display: none;
+}
+.block-div{
+    margin-top: 100px;
+    width: 800px;
+}
+.left-span, .right-span, .mid-span{
+    height: 200px;
+    width: 200px;
+    border: 8px solid #000;
+    display: inline-block;
+    font-size: 120px;
+    text-align: center;
+}
+.left-span{
+    /* margin-right: 100px; */
+    /* background-image: url('/assets/images/yoyo.png');  */
+    background-size: 100% 100%;
+}
+.mid-span{
+    /* background-image: url('/assets/images/yoyo.png'); */
+    background-size: 100% 100%;
+}
+.right-span{
+    /* background-image: url('/assets/images/teddy.png'); */
+    background-size: 100% 100%;
+}

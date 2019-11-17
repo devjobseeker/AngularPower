@@ -1,0 +1,46 @@
+.next-btn, .end-btn{
+	display: none;
+	float: right;
+}
+.intro-video, .feedback-video, .end-video{
+    width: 100%;
+	height: 100%;
+    /* width: 730px;
+	margin: 0 auto;
+	display: block; */
+}
+/* .video-div{
+	margin-top: 100px;
+} */
+.feedback-video-div{
+    /* margin: 100px auto 0; */
+    display: none;
+}
+.robot-div{
+	display: none;
+	margin: 0 auto;
+	/* background-color: #ff9a6b; */
+	/* padding-top: 150px; */
+	height: 100vh;
+}
+.door-div{
+	float: right;
+}
+.ear-div{
+	/* margin: 150px auto; */
+	display: none;
+}
+.ear-img{
+	margin: 0 auto;
+	display: block;
+}
+.green-box-div{
+    display: none;
+    height: 80vh;
+}
+.green-box{
+	height: 100%;
+	width: 80%;
+	border: 10px solid #13d609;
+	margin: 100px auto 0;
+}

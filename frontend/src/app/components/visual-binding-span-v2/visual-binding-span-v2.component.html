@@ -1,0 +1,374 @@
+<div>
+  <div *ngIf="gameMode === 'intro'">
+    <div class="video-div">
+      <video class="intro-video" id="intro-video">
+        <source class="active" type="video/mp4" />
+      </video>
+    </div>
+    <div class="clear container">
+      <button type="button" id="next-btn" class="next-btn btn btn-success" (click)="startPracticeTrials()">Next</button>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'start'">
+    <div class="container instruction-container">
+      <h2 class="text-center">Visual Binding Span (VBS)</h2>
+      <div class="before-game-title">Before Starting the Game -</div>
+      <ul class="instruction-ul">
+        <li>Make sure the headsets are plugged in.<br/>
+          <span style="margin-right:50px">
+            Child
+            <img src="assets/images/headset_child.png" width="100" height="100"/>
+          </span>
+          <span>
+            RA
+            <img src="assets/images/headset_RA.png" width="100" height="100"/>
+          </span>
+        </li>
+        <li>The <b>child</b> will rest the responding hand in the green circle, and <b>touch the screen</b> to drag <b>polygons onto a game board</b> 
+          and <b>press the "next" button.</b><br/>
+          <span style="margin-right:50px">
+              <img src="assets/images/green_circle_1.png" width="150"/>
+            </span>
+            <span style="margin-right:50px">
+              <img src="assets/images/visual-binding-ins.png" height="150"/>
+            </span>
+            <span>
+              <img src="assets/images/next-btn-vbs.png" width="150" />
+            </span>
+        </li>
+        <li>The <b>RA</b> will press <b>* key</b> on the number pad of the keyboard if response Reaction Time or accuracy needs to be checked in the lab. <br/>
+          <img src="assets/images/label-keyboard.png" width="150"/>
+        </li>
+      </ul>
+
+      <button type="button" (click)="startGame()" class="btn btn-success start-btn">Start</button>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial' || gameMode === 'real_trial'">
+    <div class="row" id="game-board-div" style="margin-right:0;margin-top:60px;">
+      <div class="game-board-div col-sm-8 text-center">
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard1="cdkDropList" [cdkDropListData]="gameBlock1" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block"
+            style="border-top:solid 4px #990000;border-left:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock1" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard2="cdkDropList" [cdkDropListData]="gameBlock2" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block"
+            style="border-top:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock2" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard3="cdkDropList" [cdkDropListData]="gameBlock3" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block"
+            style="border-top:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock3" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard4="cdkDropList" [cdkDropListData]="gameBlock4" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block"
+            style="border-right:solid 4px #990000;border-top:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock4" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard5="cdkDropList" [cdkDropListData]="gameBlock5" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-left:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock5" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard6="cdkDropList" [cdkDropListData]="gameBlock6" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row">
+            <div class="" *ngFor="let item of gameBlock6" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard7="cdkDropList" [cdkDropListData]="gameBlock7" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row">
+            <div class="" *ngFor="let item of gameBlock7" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard8="cdkDropList" [cdkDropListData]="gameBlock8" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-right:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock8" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard9="cdkDropList" [cdkDropListData]="gameBlock9" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-left:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock9" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard10="cdkDropList" [cdkDropListData]="gameBlock10" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row">
+            <div class="" *ngFor="let item of gameBlock10" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard11="cdkDropList" [cdkDropListData]="gameBlock11" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row">
+            <div class="" *ngFor="let item of gameBlock11" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard12="cdkDropList" [cdkDropListData]="gameBlock12" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard13, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-right:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock12" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard13="cdkDropList" [cdkDropListData]="gameBlock13" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard14, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-left:solid 4px #990000;border-bottom:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock13" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard14="cdkDropList" [cdkDropListData]="gameBlock14" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard15, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-bottom:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock14" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard15="cdkDropList" [cdkDropListData]="gameBlock15" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard16]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-bottom:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock15" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+        <div class="game-board-container">
+          <div cdkDropList #gameBoard16="cdkDropList" [cdkDropListData]="gameBlock16" 
+            [cdkDropListConnectedTo]="[gemItem1, gemItem2, gemItem3, gemItem4, gemItem5, gemItem6, gemItem7, gemItem8, gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15]" 
+            (cdkDropListDropped)="drop($event)" class="game-board-block second-row"
+            style="border-right:solid 4px #990000;border-bottom:solid 4px #990000;">
+            <div class="" *ngFor="let item of gameBlock16" cdkDrag>
+              <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+              <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gems-container col-sm-4">
+        <div class="row gem-row">
+          <div class="col-6 gem-col">
+            <div cdkDropList #gemItem1="cdkDropList" [cdkDropListData]="gem1"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem1" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 gem-col-alt">
+            <div cdkDropList #gemItem2="cdkDropList" [cdkDropListData]="gem2"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem2" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row gem-row">
+          <div class="col-6 gem-col">
+            <div cdkDropList #gemItem3="cdkDropList" [cdkDropListData]="gem3"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem3" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+          <div class="col-6 gem-col-alt">
+            <div cdkDropList #gemItem4="cdkDropList" [cdkDropListData]="gem4"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem4" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row gem-row">
+          <div class="col-6 gem-col">
+            <div cdkDropList #gemItem5="cdkDropList" [cdkDropListData]="gem5"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem5" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+          <div class="col-6 gem-col-alt">
+            <div cdkDropList #gemItem6="cdkDropList" [cdkDropListData]="gem6"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem6" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gem-row">
+          <div class="col-6 gem-col">
+            <div cdkDropList #gemItem7="cdkDropList" [cdkDropListData]="gem7"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem7" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+          <div class="col-6 gem-col-alt">
+            <div cdkDropList #gemItem8="cdkDropList" [cdkDropListData]="gem8"
+            [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+            (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div">
+              <div class="gem-img" *ngFor="let item of gem8" cdkDrag >
+                <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+                <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- <div cdkDropList #gemList="cdkDropList" [cdkDropListData]="gems" style="height:550px"
+          [cdkDropListConnectedTo]="[gameBoard1, gameBoard2, gameBoard3, gameBoard4, gameBoard5, gameBoard6, gameBoard7, gameBoard8, gameBoard9, gameBoard10, gameBoard11, gameBoard12, gameBoard13, gameBoard14, gameBoard15, gameBoard16]"
+          (cdkDropListDropped)="dropBackGem($event)" class="gem-list-div" cdkDropListSortingDisabled="true">
+          <div class="gem-img" *ngFor="let item of gems" cdkDrag>
+            <img *ngIf="gameMode === 'practice_trial'" src="assets/images/visual-binding/practice/{{item}}.png" />
+            <img *ngIf="gameMode === 'real_trial'" src="assets/images/visual-binding/real/{{item}}.png" />
+          </div>
+        </div> -->
+
+        <button type="button" id="next-trial-btn" class="next-btn btn btn-success trial-next-btn-lg" (click)="clickNextBtn()"></button>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial'">  
+    <div id="feedback-video-div" class="feedback-video-div">			
+      <video class="feedback-video" id="feedback-video">
+        <source type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="gameMode === 'practice_trial' || gameMode === 'real_trial'">
+
+    <div class="clear container">
+      <button type="button" id="next-trial-btn" class="next-btn btn btn-success trial-next-btn-lg" (click)="clickNextBtn()"></button>
+    </div>
+  </div> -->
+
+  <div *ngIf="gameMode === 'complete'">
+    <div class="video-div">
+      <video class="end-video" id="end-video" autoplay="autoplay" (ended)="showExitBtn()">
+        <source class="active" type="video/mp4" src="assets/videos/visual-binding/Ending.mp4"/>
+      </video>
+      <div class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+        <span style="margin-right:350px;margin-left:150px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+        <span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+      </div>
+    </div>
+    <a id="end-btn" class="end-btn btn btn-success" [routerLink]="['/app/dashboard']">
+      <span style="margin-right:8px">Exit</span> <i class="fa fa-lg fa-sign-out"></i>
+    </a>
+  </div>
+
+</div>

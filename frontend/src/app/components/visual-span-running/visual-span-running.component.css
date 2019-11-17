@@ -1,0 +1,42 @@
+.ready-div{
+    margin: 200px auto 0;
+}
+.polygon-div{
+    margin: 200px auto 0;
+}
+.answer-div{
+    margin: 300px auto 0;
+    display: none;
+}
+.next-btn, .end-btn{
+	display: none;
+	float: right;
+}
+.intro-video, .feedback-video, .end-video{
+    width: 100%;
+	height: 100%;
+    /* width: 730px;
+	margin: 0 auto;
+	display: block; */
+}
+/* .video-div{
+	margin-top: 100px;
+} */
+.feedback-video-div{
+    /* margin: 100px auto 0; */
+    display: none;
+}
+.empty-block{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.empty-block-div{
+    height: 150px;
+}
+.polygon-choice{
+    margin-right: 10px;
+}

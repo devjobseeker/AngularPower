@@ -1,0 +1,127 @@
+<div>
+  <div *ngIf="gameMode === 'intro'">
+    <div class="video-div">
+      <video class="intro-video" id="intro-video">
+        <source class="active" type="video/mp4" />
+      </video>
+
+      <div *ngIf="showCoins" class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+        <span style="margin-right:250px;margin-left:100px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+        <span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+      </div>
+    </div>
+    <div class="clear container">
+      <button type="button" id="next-btn" class="next-btn btn btn-success" (click)="startPracticeTrials()">Next</button>
+    </div>
+    
+  </div>
+
+  <div *ngIf="gameMode === 'start'">
+    <div class="container instruction-container">
+      <h2 class="text-center">Number Updating - Auditory(NUA)</h2>
+      <div class="before-game-title">Before Starting the Game -</div>
+      <ul class="instruction-ul">
+        <li>Make sure the headsets are plugged in.<br/>
+          <span style="margin-right:50px">
+            Child
+            <img src="assets/images/headset_child.png" width="150" height="150"/>
+          </span>
+          <span>
+            RA
+            <img src="assets/images/headset_RA.png" width="150" height="150"/>
+          </span>
+        </li>
+        <li>The <b>child</b> will <b>speak the answers</b> into the microphone. 
+        There are two rounds, one with two numbers and one with three numbers.<br/>
+          <img src="assets/images/mouth_open.png" width="150" />
+        </li>
+        <li>
+          The <b>RA will record</b> the child's verbal response using the <b>number pad on the keyboard</b>, and press <b>*key</b> on the number pad 
+          if response Reaction Time or accuracy needs to be checked in the lab. <br/>
+          <img src="assets/images/repetition-auditory/label-keyboard-1.png" width="200" style="margin-right:100px"/>
+          <img src="assets/images/repetition-auditory/label-keyboard.png" width="150"/>
+        </li>
+      </ul>
+
+      <button type="button" (click)="startGame()" class="btn btn-success start-btn">Start</button>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'practice_trial' || gameMode === 'real_trial'">
+    <div class="container block-div" id="block-div">
+      <div class="">
+        <div *ngIf="numOfBoxes == 2" class="row">
+          <div class="col-6 left-span-div text-center">
+            <div style="width:200px;margin:0 auto">
+              <img src="assets/images/number-update-auditory/woman.png" height="300"/>
+            </div>
+            <span class="left-span" id="left-span">
+              <span class="left-span-number"></span>
+            </span>
+          </div>
+          <div class="col-6 right-span-div text-center">
+            <div style="width:200px;margin:0 auto">
+              <img src="assets/images/number-update-auditory/man.png" height="300"/>
+            </div>
+            <span class="right-span" id="right-span">
+              <span class="right-span-number"></span>
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="numOfBoxes == 3" class="row">
+          <div class="col-4 left-span-div">
+            <div style="width:200px" class="text-center">
+              <img src="assets/images/number-update-auditory/woman.png" height="300"/>
+            </div>
+            <span class="left-span" id="left-span">
+              <span class="left-span-number"></span>
+            </span>
+          </div>
+
+          <div class="col-4 right-span-div">
+            <div style="width:200px" class="text-center">
+              <img src="assets/images/number-update-auditory/man.png" height="300"/>
+            </div>
+            <span class="right-span" id="right-span">
+              <span class="right-span-number"></span>
+            </span>
+          </div>
+
+          <div  class="col-4 mid-span-div">
+            <div style="width:200px;height:300px" class="text-center">
+              <img src="assets/images/number-update-auditory/baby.png" height="200" style="margin-top:80px"/>
+            </div>
+            <span class="mid-span" id="mid-span">
+              <span class="mid-span-number"></span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div id="feedback-video-div" class="feedback-video-div">			
+      <video class="feedback-video" id="feedback-video">
+        <source type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div *ngIf="gameMode === 'complete'">
+    <div class="video-div">
+      <video class="end-video" id="end-video" autoplay="autoplay" (ended)="showExitBtn()">
+        <source class="active" type="video/mp4" src="assets/videos/number-update-auditory/Ending_Great_Job.mp4"/>
+      </video>
+      <div class="game-achievement-div" id="game-achievement-div" [@gameResultSlideIn]>
+        <span style="margin-right:350px;margin-left:150px" class="game-achievement-span"><img src="assets/images/coins.png" class="img-total-coins"/> {{coins}}</span>
+        <span class="game-achievement-span"><img src="assets/images/rocks.png" class="img-total-rocks"/> {{rocks}}</span>
+      </div>
+    </div>
+    <a id="end-btn" class="end-btn btn btn-success" [routerLink]="['/app/dashboard']">
+      <span style="margin-right:8px">Exit</span> <i class="fa fa-lg fa-sign-out"></i>
+    </a>
+  </div>
+
+</div>
